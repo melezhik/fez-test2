@@ -44,4 +44,4 @@ tasks:
     language: Bash
     code: |
       zef install --/test https://github.com/tony-o/raku-fez.git
-      sudo apt-get install -y timeout 
+      sudo apt-get install -y coreutils 
