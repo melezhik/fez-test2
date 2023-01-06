@@ -7,6 +7,16 @@ tasks:
     depends:
       -
         name: install
+    followup:
+      -
+        name: case1
+      -
+        name: case2
+    language: Bash
+    code: |
+      echo "OK"
+  -
+    name: case1
     language: Bash
     code: |
       set -e
@@ -18,7 +28,20 @@ tasks:
       cd source/
       fez upload --unattended
   -
+    name: case2
+    language: Bash
+    code: |
+      set -e
+      
+      cat << HERE > ~/.fez-config.json
+        {"groups":[],"un":"foo","key":"blablabla"}
+      HERE
+      
+      cd source/
+      timeout 10 fez upload || echo $?
+  -
     name: install
     language: Bash
     code: |
       zef install --/test https://github.com/tony-o/raku-fez.git
+      sudo apt-get install -y timeout 
