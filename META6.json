@@ -1,0 +1,13 @@
+{
+  "auth": "zef:foo",
+  "authors" : [
+    "Test User"
+  ],
+  "description" : "FooBar",
+  "license" : "Artistic-2.0",
+  "name" : "Foo-Bar",
+  "provides" : {
+    "Foo::Bar" : "lib/Foo/Bar.rakumod"
+  },
+  "version" : "0.0.1"
+}
