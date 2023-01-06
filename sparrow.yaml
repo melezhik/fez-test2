@@ -1,0 +1,24 @@
+image:
+  - melezhik/sparrow:debian
+tasks:
+  -
+    name: test
+    default: True
+    depends:
+      -
+        name: install
+    language: Bash
+    code: |
+      set -e
+      
+      cat << HERE > ~/.fez-config.json
+        {"groups":[],"un":"foo","key":"blablabla"}
+      HERE
+      
+      cd source/
+      fez upload --unattended
+  -
+    name: install
+    language: Bash
+    code: |
+      zef install --/test https://github.com/tony-o/raku-fez.git
